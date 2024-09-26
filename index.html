@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/0454434f54.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      #main {
+        width: 32vw;
+        height: 70vh;
+        border: 2px solid black;
+        padding: 10px;
+        background-color:rgba(0, 0, 0, 0.431);
+        position:relative;
+        left:500px;
+        top:80px;
+      }
+      #display {
+        width: 30vw;
+        height: 13vh;
+        border: 2px solid red;
+      }
+      #child {
+        width: 30vw;
+        height: 50vh;
+        border: 2px solid pink;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 10px;
+        padding: 10px;
+        margin:10px;
+      }
+      .btn {
+        border: 1px solid black;
+        height: 7vh;
+        width: 5vw;
+        background-color:lightblue;
+      }
+      .btn:hover {
+        background-color: rgba(255, 20, 145, 0.787);
+      }
+      .val {
+        font-size: 40px;
+        margin-left: 20px;
+      }
+      .val1 {
+        margin-left: 10px;
+      }
+      .val2 {
+        font-size: 30px;
+        margin-left: 10px;
+      }
+      #p1 {
+        width: 30vw;
+        height: 13vh;
+        font-size: 40px;
+      }
+      input{
+        text-align:right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="display">
+        <!-- <span id="p1"></span> -->
+        <input type="text" id="p1" />
+        <!-- <span id="p2"></span>
+        <span id="p3"></span> -->
+      </div>
+      <div id="child">
+        <div class="btn" id="ac"><span class="val val2">AC</span></div>
+        <div class="btn" id="cross">
+          <span class="val val1"
+            ><ion-icon name="backspace-outline"></ion-icon
+          ></span>
+        </div>
+        <div class="btn" id="mod" onclick="addValue('%')">
+          <span class="val">%</span>
+        </div>
+        <div class="btn" id="divide" onclick="addValue('/')">
+          <span class="val">/</span>
+        </div>
+        <div class="btn" id="ip1" onclick="addValue('7')">
+          <span class="val">7</span>
+        </div>
+        <div class="btn" id="ip2" onclick="addValue('8')">
+          <span class="val">8</span>
+        </div>
+        <div class="btn" id="ip3" onclick="addValue('9')">
+          <span class="val">9</span>
+        </div>
+        <div class="btn" id="mul" onclick="addValue('*')">
+          <span class="val">x</span>
+        </div>
+        <div class="btn" id="ip5" onclick="addValue('4')">
+          <span class="val">4</span>
+        </div>
+        <div class="btn" id="ip6" onclick="addValue('5')">
+          <span class="val">5</span>
+        </div>
+        <div class="btn" id="ip7" onclick="addValue('6')">
+          <span class="val">6</span>
+        </div>
+        <div class="btn" id="minus" onclick="addValue('-')">
+          <span class="val">-</span>
+        </div>
+        <div class="btn" id="ip9" onclick="addValue('1')">
+          <span class="val">1</span>
+        </div>
+        <div class="btn" id="ip0" onclick="addValue('2')">
+          <span class="val">2</span>
+        </div>
+        <div class="btn" id="ip11" onclick="addValue('3')">
+          <span class="val">3</span>
+        </div>
+        <div class="btn" id="add" onclick="addValue('+')">
+          <span class="val">+</span>
+        </div>
+        <div class="btn" id="ip13" onclick="addValue('00')">
+          <span class="val val1">00</span>
+        </div>
+        <div class="btn" id="ip14" onclick="addValue('0')">
+          <span class="val">0</span>
+        </div>
+        <div class="btn" id="dot" onclick="addValue('.')">
+          <span class="val">.</span>
+        </div>
+        <div class="btn" id="eval"><span class="val">=</span></div>
+      </div>
+    </div>
+    <script>
+      let p1 = document.getElementById("p1");
+      let p2 = document.getElementById("p2");
+      let p3 = document.getElementById("p3");
+      let display = document.getElementById("display");
+      function addValue(x) {
+        p1.value += x;
+      }
+      document.getElementById("ac").addEventListener("click", () => {
+        p1.value = " ";
+      });
+      document.getElementById("cross").addEventListener("click", () => {
+        p1.value = p1.value.slice(0, -1);
+      });
+      document.getElementById("eval").addEventListener("click", () => {
+        try {
+          let x = eval(p1.value);
+          p1.value = x;
+        } catch (error) {
+          p1.value = "Error";
+        }
+      });
+    </script>
+  </body>
+</html>
+<!-- // script.js
+function appendToDisplay(value) {
+    const display = document.getElementById('display');
+    display.value += value;
+}
+
+function clearDisplay() {
+    const display = document.getElementById('display');
+    display.value = '';
+}
+
+function calculateResult() {
+    const display = document.getElementById('display');
+    try {
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = 'Error';
+    }
+} -->
